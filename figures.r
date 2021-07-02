@@ -100,6 +100,10 @@ out_1 <- df_rc %>%
 ggsave(here("vis/fig_1.pdf"), out_1, height = 4.5, width = 10)
 ggsave(here("vis/fig_1.png"), out_1, height = 4.5, width = 10, dpi = 200)
 
+ggsave(here("vis/fig_1_cm.pdf"), out_1, units = "cm", height = 4*3, width = 9*3)
+ggsave(here("vis/fig_1_cm.png"), out_1, units = "cm", height = 4*3, width = 9*3, dpi = 200)
+
+
 ###----------------------------------------------------------------------------------
 
 
@@ -193,8 +197,8 @@ pan_3 <- df_rc %>%
   filter(varname == "Termination") %>%
   mutate(county_rc = factor(county, levels = pan_3_ind$county[pan_3_ind$ord], ordered = TRUE)) %>%
   ggplot(aes(x = c_mn, y = county_rc, color = race_ethn_rc)) +
-  geom_point() + facet_wrap(~ race_ethn_rc, nrow = 1) +
   geom_vline(aes(xintercept = pan_3_med), color = "gray50") +
+  geom_point() + facet_wrap(~ race_ethn_rc, nrow = 1) +
   scale_color_discrete_qualitative(palette = "Dark 3") +
   scale_x_continuous(labels = scales::percent_format(accuracy = 1), breaks = c(0, 0.02, 0.04)) +
   guides(color = FALSE) +
@@ -214,6 +218,10 @@ out_patch <- (pan_1 / plot_spacer() / pan_2 / plot_spacer() / pan_3) +
 
 ggsave(here("vis/fig_2.pdf"), out_patch, height = 11, width = 12)
 ggsave(here("vis/fig_2.png"), out_patch, height = 11, width = 12, dpi = 200)
+
+
+ggsave(here("vis/fig_2_cm.pdf"), out_patch, units = "cm", height = 18*1.5, width = 22*1.5)
+ggsave(here("vis/fig_2_cm.png"), out_patch, units = "cm", height = 18*1.5, width = 22*1.5, dpi = 200)
 
 
 
